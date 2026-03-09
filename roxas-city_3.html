@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Roxas City — Seafood Capital of the Philippines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ═══ TOKENS ═══════════════════════════════════════ */
+:root{
+  --navy:#3D5A99; --sky:#29ABE2; --red:#D64B38; --gold:#C9913A;
+  --cream:#FAF7F2; --sand:#F2EDE5;
+  --ink:#1A2340; --ink2:#3D4A6B; --ink3:#6B7A9A; --muted:#9AA3BB;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Plus Jakarta Sans',-apple-system,sans-serif;
+  --spring:cubic-bezier(0.34,1.56,0.64,1);
+  --out:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--sans);cursor:pointer;border:none;background:none}
+img{display:block}
+
+/* ═══ KEYFRAMES ════════════════════════════════════ */
+@keyframes heroIn{from{opacity:0;transform:translateY(44px) scale(0.97)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pulseDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.5}}
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-18px) rotate(1.5deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(-1deg)}}
+@keyframes float3{0%,100%{transform:translateY(0)}40%{transform:translateY(-20px)}}
+@keyframes orb1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-30px)}}
+@keyframes orb2{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,40px)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes waveMove{0%,100%{transform:translateX(0)}50%{transform:translateX(-30px)}}
+@keyframes navIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+
+/* ═══ SCROLL REVEAL ════════════════════════════════ */
+.sr{opacity:0;transform:translateY(32px);transition:opacity .7s var(--out),transform .7s var(--out);will-change:opacity,transform}
+.sr.visible{opacity:1;transform:none}
+.sr.d1{transition-delay:.08s}.sr.d2{transition-delay:.16s}.sr.d3{transition-delay:.24s}
+.sr.d4{transition-delay:.32s}.sr.d5{transition-delay:.40s}.sr.d6{transition-delay:.48s}
+
+/* ═══ TYPOGRAPHY ═══════════════════════════════════ */
+.display{font-family:var(--serif);font-size:clamp(52px,9vw,96px);line-height:1.02;letter-spacing:-.02em;font-weight:600}
+.heading{font-family:var(--serif);font-size:clamp(34px,5vw,54px);line-height:1.1;letter-spacing:-.02em;font-weight:600}
+.subhead{font-family:var(--serif);font-size:clamp(22px,3vw,30px);line-height:1.25;font-weight:600}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sky)}
+.grad-text{background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 55%,#6B7DE8 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+
+/* ═══ LAYOUT ════════════════════════════════════════ */
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+.wrap-sm{max-width:720px;margin:0 auto;padding:0 24px}
+.section{padding:88px 0}
+
+/* ═══ GLASS ════════════════════════════════════════ */
+.glass{background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border-radius:22px;box-shadow:0 4px 24px rgba(61,90,153,.09);transition:transform .38s var(--spring),box-shadow .38s var(--out)}
+.glass:hover{transform:translateY(-6px);box-shadow:0 20px 56px rgba(61,90,153,.16)}
+
+/* ═══ BUTTONS ══════════════════════════════════════ */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:980px;font-size:14.5px;font-weight:600;font-family:var(--sans);transition:all .28s var(--spring);white-space:nowrap}
+.btn-sky{background:linear-gradient(135deg,var(--sky),#1E8FC5);color:#fff;box-shadow:0 4px 20px rgba(41,171,226,.4)}
+.btn-sky:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 8px 32px rgba(41,171,226,.5)}
+.btn-navy{background:linear-gradient(135deg,var(--navy),#2A4080);color:#fff;box-shadow:0 4px 20px rgba(61,90,153,.35)}
+.btn-navy:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 8px 32px rgba(61,90,153,.45)}
+.btn-ghost{background:rgba(255,255,255,.85);color:var(--ink);border:1.5px solid rgba(61,90,153,.2)}
+.btn-ghost:hover{background:#fff;border-color:var(--sky);transform:translateY(-2px) scale(1.02)}
+.btn-wh{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.4);backdrop-filter:blur(8px)}
+.btn-wh:hover{background:rgba(255,255,255,.24);transform:translateY(-2px) scale(1.02)}
+
+/* ═══════════════════════════════════════════════════
+   LIVE NEWS TICKER
+═══════════════════════════════════════════════════ */
+#ticker{
+  display:flex;align-items:center;height:36px;
+  background:#0a1020;
+  border-bottom:1px solid rgba(41,171,226,.25);
+  overflow:hidden;position:relative;z-index:1001;
+}
+.tk-live{
+  display:flex;align-items:center;gap:6px;
+  background:var(--red);padding:0 14px;height:100%;flex-shrink:0;
+}
+.tk-dot{width:6px;height:6px;border-radius:50%;background:#fff;animation:pulseDot 1.3s ease-in-out infinite}
+.tk-label{font-size:10px;font-weight:800;color:#fff;letter-spacing:.14em}
+.tk-divider{width:1px;height:55%;background:rgba(255,255,255,.12);flex-shrink:0}
+.tk-scroll{flex:1;overflow:hidden;height:100%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 4%,#000 96%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 4%,#000 96%,transparent 100%)}
+.tk-track{display:inline-flex;align-items:center;height:100%;white-space:nowrap;animation:ticker 50s linear infinite}
+.tk-track:hover{animation-play-state:paused}
+.tk-item{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:500;color:rgba(255,255,255,.8);padding:0 6px}
+.tk-tag{font-size:9px;font-weight:800;letter-spacing:.1em;color:var(--sky);background:rgba(41,171,226,.15);border:1px solid rgba(41,171,226,.3);border-radius:4px;padding:2px 6px;flex-shrink:0}
+.tk-sep{color:rgba(41,171,226,.35);font-size:8px;padding:0 10px}
+.tk-date{font-size:11px;color:rgba(255,255,255,.3);padding:0 16px;flex-shrink:0;white-space:nowrap}
+
+/* ═══════════════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════════════ */
+#nav{position:sticky;top:0;z-index:1000;padding:0 24px;transition:all .4s var(--out);animation:navIn .6s var(--out) both}
+#nav.scrolled{background:rgba(250,247,242,.9);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border-bottom:1px solid rgba(61,90,153,.1);box-shadow:0 2px 24px rgba(61,90,153,.08)}
+.nav-inner{max-width:1040px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:11px;transition:transform .3s var(--spring)}
+.nav-logo:hover{transform:scale(1.02)}
+.nav-logo img{height:38px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(61,90,153,.2))}
+.nav-logo-title{font-size:13.5px;font-weight:700;color:var(--ink);letter-spacing:.04em}
+.nav-logo-sub{font-size:9.5px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-item{position:relative}
+.nav-btn{padding:8px 13px;border-radius:10px;font-size:13.5px;font-weight:500;color:var(--ink2);display:flex;align-items:center;gap:5px;transition:all .2s}
+.nav-btn:hover{background:rgba(61,90,153,.07);color:var(--ink)}
+.nav-btn svg{transition:transform .25s var(--out)}
+.nav-item:hover .nav-btn svg{transform:rotate(180deg)}
+.nav-dd{
+  position:absolute;top:100%;left:50%;min-width:210px;border-radius:16px;
+  background:rgba(255,255,255,.97);border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 16px 56px rgba(61,90,153,.18);backdrop-filter:blur(32px);overflow:hidden;
+  opacity:0;pointer-events:none;
+  transform:translateX(-50%) translateY(4px) scale(.97);
+  transition:opacity .18s var(--out),transform .18s var(--out);
+  transform-origin:top center;
+  /* padding-top creates invisible bridge so mouse can move into dropdown */
+  padding-top:8px;
+  margin-top:0;
+}
+/* Invisible hover bridge between button and dropdown */
+.nav-dd::before{
+  content:'';position:absolute;top:-8px;left:0;right:0;height:8px;
+}
+.nav-item:hover .nav-dd{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0) scale(1)}
+.dd-btn{display:block;padding:12px 20px;font-size:14px;font-weight:500;color:var(--ink2);transition:all .15s;border-bottom:1px solid rgba(61,90,153,.05);text-align:left;width:100%}
+.dd-btn:last-child{border-bottom:none}
+.dd-btn:hover{background:linear-gradient(90deg,rgba(41,171,226,.07),rgba(61,90,153,.04));color:var(--navy);padding-left:26px}
+
+/* ═══ HERO OCEAN CANVAS ════════════════════════════ */
+#heroCanvas{
+  position:absolute;inset:0;z-index:1;
+  pointer-events:none;opacity:.55;
+  width:100%;height:100%;
+}
+.page{display:none;animation:fadeIn .4s ease}
+.page.active{display:block}
+
+/* ═══════════════════════════════════════════════════
+   HOME HERO
+═══════════════════════════════════════════════════ */
+#hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#EEF3FF 0%,#E8F4FF 30%,#FFF5EE 65%,#FFF8E8 100%);background-size:300% 300%;animation:gradShift 14s ease infinite}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(61,90,153,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(61,90,153,.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 30%,transparent 100%)}
+.orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(60px)}
+.orb1{width:520px;height:520px;top:-120px;right:-60px;background:radial-gradient(circle,rgba(41,171,226,.22) 0%,transparent 70%);animation:orb1 15s ease-in-out infinite}
+.orb2{width:420px;height:420px;bottom:-60px;left:3%;background:radial-gradient(circle,rgba(61,90,153,.16) 0%,transparent 70%);animation:orb2 19s ease-in-out infinite}
+.orb3{width:300px;height:300px;top:40%;right:18%;background:radial-gradient(circle,rgba(245,216,0,.13) 0%,transparent 70%);animation:orb1 23s ease-in-out infinite reverse}
+.hero-inner{position:relative;z-index:2;max-width:1040px;margin:0 auto;padding:60px 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-left{animation:heroIn 1.1s var(--out) both}
+.hero-right{animation:heroIn 1.1s var(--out) .2s both}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.72);border:1px solid rgba(41,171,226,.25);border-radius:980px;padding:7px 16px 7px 10px;margin-bottom:28px;backdrop-filter:blur(12px);box-shadow:0 2px 12px rgba(41,171,226,.12)}
+.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--sky);animation:pulseDot 2s ease-in-out infinite}
+.hero-badge-text{font-size:11px;font-weight:700;color:var(--sky);letter-spacing:.1em;text-transform:uppercase}
+.hero-title{margin-bottom:22px}
+.hero-sub{font-size:clamp(16px,2vw,19px);color:var(--ink2);line-height:1.7;max-width:500px;margin-bottom:40px;font-weight:400}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Hero visual */
+.hero-visual{position:relative;z-index:3}
+.hero-card{border-radius:24px;overflow:hidden;position:relative;box-shadow:0 24px 72px rgba(61,90,153,.2),0 4px 16px rgba(61,90,153,.1);aspect-ratio:4/3}
+.hero-card img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 8s ease}
+.hero-card:hover img{transform:scale(1.04)}
+.hero-card-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(26,35,64,.72) 100%);z-index:1}
+.hero-card-cap{position:absolute;bottom:0;left:0;right:0;padding:24px 22px 20px;z-index:2}
+.hero-card-cap .eyebrow{color:rgba(240,201,106,.9);margin-bottom:4px}
+.hero-card-cap h3{font-family:var(--serif);font-size:20px;color:#fff;font-weight:600}
+
+/* Stat chips — ABOVE the card */
+.chip{position:absolute;z-index:10;background:rgba(255,255,255,.95);border:1px solid rgba(255,255,255,.99);backdrop-filter:blur(16px);border-radius:14px;padding:10px 16px;box-shadow:0 8px 28px rgba(61,90,153,.18)}
+.chip-num{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--ink);line-height:1}
+.chip-lbl{font-size:11px;color:var(--muted);margin-top:2px}
+.chip1{top:-20px;left:-24px;animation:float1 6s ease-in-out infinite}
+.chip2{bottom:32px;left:-32px;animation:float2 7s ease-in-out infinite}
+.chip3{top:40%;right:-28px;animation:float3 8s ease-in-out infinite}
+
+/* ═══════════════════════════════════════════════════
+   WAVE SECTION — canvas replaces SVG (cross-browser)
+═══════════════════════════════════════════════════ */
+.wave-wrap{
+  position:relative;overflow:hidden;
+  height:180px;margin-top:-4px;line-height:0;
+  background:transparent;
+}
+#waveCanvas{
+  display:block;width:100%;height:100%;
+}
+.wave-path1,.wave-path2,.wave-path3{display:none} /* unused */
+
+/* ═══ STATS BAR ════════════════════════════════════ */
+#stats{background:white;border-bottom:1px solid rgba(61,90,153,.08)}
+.stats-grid{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-cell{padding:36px 24px;text-align:center;border-right:1px solid rgba(61,90,153,.08);transition:background .25s}
+.stat-cell:last-child{border-right:none}
+.stat-cell:hover{background:linear-gradient(135deg,rgba(41,171,226,.04),rgba(61,90,153,.04))}
+.stat-num{font-family:var(--serif);font-size:clamp(36px,4vw,52px);line-height:1;color:var(--ink);margin-bottom:6px}
+.stat-lbl{font-size:13px;color:var(--ink3)}
+
+/* ═══ SERVICE CARDS ════════════════════════════════ */
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;margin-top:56px}
+.srv-card{padding:32px 30px 28px;position:relative;overflow:hidden}
+.srv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transition:height .3s var(--out)}
+.srv-card:hover::before{height:4px}
+.srv-card.c-sky::before{background:linear-gradient(90deg,var(--sky),#1E8FC5)}
+.srv-card.c-navy::before{background:linear-gradient(90deg,var(--navy),#2A4080)}
+.srv-card.c-red::before{background:linear-gradient(90deg,var(--red),#B83A2A)}
+.srv-card.c-gold::before{background:linear-gradient(90deg,var(--gold),#E8A83C)}
+.srv-icon{width:48px;height:48px;border-radius:14px;margin-bottom:18px;display:flex;align-items:center;justify-content:center}
+.si-sky{background:linear-gradient(135deg,rgba(41,171,226,.15),rgba(41,171,226,.07))}
+.si-navy{background:linear-gradient(135deg,rgba(61,90,153,.15),rgba(61,90,153,.07))}
+.si-red{background:linear-gradient(135deg,rgba(214,75,56,.15),rgba(214,75,56,.07))}
+.si-gold{background:linear-gradient(135deg,rgba(201,145,58,.15),rgba(201,145,58,.07))}
+.srv-title{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:9px}
+.srv-desc{font-size:14px;color:var(--ink3);line-height:1.65;margin-bottom:20px}
+.srv-link{font-size:13px;font-weight:600;display:flex;align-items:center;gap:5px;transition:gap .2s}
+.srv-card:hover .srv-link{gap:9px}
+
+/* ═══ GALLERY ══════════════════════════════════════ */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:14px;margin-top:52px}
+.gal-item{border-radius:18px;overflow:hidden;position:relative;cursor:pointer;box-shadow:0 4px 20px rgba(61,90,153,.1);transition:transform .4s var(--spring),box-shadow .4s var(--out)}
+.gal-item:hover{transform:translateY(-7px) scale(1.01);box-shadow:0 20px 56px rgba(61,90,153,.2)}
+.gal-item.tall{grid-row:span 2}
+/* ★ FIXED: images fill container without warping */
+.gal-item .gal-img-wrap{width:100%;height:220px;overflow:hidden;background:linear-gradient(135deg,#dde8f0,#c8d8e8)}
+.gal-item.tall .gal-img-wrap{height:100%;min-height:460px}
+.gal-item .gal-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 6s ease}
+.gal-item:hover .gal-img-wrap img{transform:scale(1.05)}
+.gal-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(26,35,64,.82) 100%);opacity:.72;transition:opacity .3s}
+.gal-item:hover .gal-overlay{opacity:1}
+.gal-cap{position:absolute;bottom:0;left:0;right:0;padding:20px 18px 16px;z-index:2}
+.gal-cap .eyebrow{color:rgba(255,255,255,.6);font-size:10px;margin-bottom:3px}
+.gal-cap h3{font-family:var(--serif);font-size:17px;color:#fff;font-weight:600}
+
+/* ═══ NEWS CARDS ═══════════════════════════════════ */
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;margin-top:52px}
+.news-card{border-radius:20px;overflow:hidden;border:1px solid rgba(61,90,153,.08);background:#fff;transition:transform .4s var(--spring),box-shadow .4s var(--out);cursor:pointer}
+.news-card:hover{transform:translateY(-7px);box-shadow:0 20px 56px rgba(61,90,153,.15)}
+.news-img{height:190px;overflow:hidden;position:relative;background:linear-gradient(135deg,var(--sand),rgba(41,171,226,.1))}
+.news-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 6s ease}
+.news-card:hover .news-img img{transform:scale(1.06)}
+.news-body{padding:20px 22px 24px}
+.news-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky);margin-bottom:9px}
+.news-title{font-size:15.5px;font-weight:600;color:var(--ink);line-height:1.45;margin-bottom:12px}
+.news-date{font-size:12px;color:var(--muted)}
+
+/* ═══ QUOTE STRIP ══════════════════════════════════ */
+#quote{position:relative;overflow:hidden;text-align:center;padding:96px 0;background:linear-gradient(135deg,#1E3A7A,var(--navy) 40%,#1A5F8C);background-size:200% 200%;animation:gradShift 11s ease infinite}
+.q-orb1{position:absolute;width:600px;height:600px;top:-200px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(41,171,226,.15),transparent 70%);filter:blur(40px);pointer-events:none}
+.q-orb2{position:absolute;width:400px;height:400px;bottom:-100px;right:-50px;background:radial-gradient(circle,rgba(245,216,0,.1),transparent 70%);filter:blur(40px);pointer-events:none}
+.q-seals{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:32px;flex-wrap:wrap}
+.q-seals img{height:52px;width:auto;object-fit:contain;filter:brightness(1.1);transition:transform .3s var(--spring)}
+.q-seals img:hover{transform:scale(1.12)}
+.q-line{width:0;height:1px;background:rgba(255,255,255,.2);margin:0 auto 44px;transition:width 1.2s var(--out)}
+.q-line.visible{width:120px}
+.q-text{font-family:var(--serif);font-size:clamp(26px,4.5vw,46px);color:#fff;font-style:italic;line-height:1.2;margin-bottom:18px;font-weight:600}
+.q-attr{font-size:14px;color:rgba(255,255,255,.45);margin-bottom:44px}
+
+/* ═══ PAGE HERO ════════════════════════════════════ */
+/* FIXED: content z-index always above everything */
+.ph{position:relative;overflow:hidden;padding:96px 24px 80px;text-align:center}
+.ph-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,#EEF3FF,#E6F5FF 40%,#FFF8EE);background-size:200% 200%;animation:gradShift 14s ease infinite}
+.ph-orb{position:absolute;z-index:1;border-radius:50%;pointer-events:none;filter:blur(50px);width:400px;height:400px;top:-100px;left:50%;transform:translateX(-30%);background:radial-gradient(circle,rgba(41,171,226,.16),transparent 70%);animation:orb1 16s ease-in-out infinite}
+/* ★ CRITICAL: text is ALWAYS z-index:10, above any image layer */
+.ph-content{position:relative;z-index:10;max-width:700px;margin:0 auto;animation:heroIn .9s var(--out) both}
+
+/* ═══ SECTION HEADER ═══════════════════════════════ */
+.sec-hdr{text-align:center;max-width:640px;margin:0 auto}
+
+/* ═══ BUSINESS PERMIT ══════════════════════════════ */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(61,90,153,.1);border-radius:20px;overflow:hidden;margin-top:48px}
+.step{background:#fff;padding:32px 26px;transition:background .25s;position:relative;overflow:hidden}
+.step::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--navy));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--out)}
+.step:hover::after{transform:scaleX(1)}
+.step:hover{background:linear-gradient(135deg,rgba(41,171,226,.04),rgba(61,90,153,.03))}
+.step-n{font-size:11px;font-weight:700;color:var(--sky);letter-spacing:.12em;margin-bottom:12px}
+.step-t{font-family:var(--serif);font-size:24px;color:var(--ink);margin-bottom:10px;font-weight:600}
+.step-d{font-size:14px;color:var(--ink3);line-height:1.65}
+.tab-row{display:inline-flex;background:var(--sand);border-radius:12px;padding:4px;margin-bottom:28px}
+.tab-btn{padding:9px 24px;border-radius:9px;font-size:14px;font-weight:500;color:var(--ink3);transition:all .25s var(--out)}
+.tab-btn.on{background:#fff;color:var(--navy);box-shadow:0 2px 12px rgba(61,90,153,.12);font-weight:600}
+.req-list{border:1px solid rgba(61,90,153,.08);border-radius:18px;overflow:hidden}
+.req-row{display:flex;align-items:flex-start;gap:14px;padding:15px 22px;background:#fff;border-bottom:1px solid rgba(61,90,153,.06);cursor:pointer;transition:background .2s}
+.req-row:last-child{border-bottom:none}
+.req-row:hover{background:rgba(41,171,226,.03)}
+.req-row.chk{opacity:.4}
+.req-circle{flex-shrink:0;margin-top:2px;width:20px;height:20px;border-radius:50%;border:1.5px solid rgba(61,90,153,.25);display:flex;align-items:center;justify-content:center;transition:all .25s var(--spring)}
+.req-row.chk .req-circle{background:linear-gradient(135deg,var(--sky),var(--navy));border-color:transparent}
+.req-title{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:2px}
+.req-note{font-size:12.5px;color:var(--muted);line-height:1.5}
+.tips-box{border-radius:20px;padding:36px 40px;background:linear-gradient(135deg,rgba(61,90,153,.06),rgba(41,171,226,.05));border:1px solid rgba(61,90,153,.1);margin-top:24px}
+.tip-row{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(61,90,153,.07)}
+.tip-row:last-child{border-bottom:none}
+.tip-dash{color:var(--sky);font-weight:700;flex-shrink:0}
+.tip-text{font-size:14.5px;color:var(--ink2);line-height:1.6}
+.cpill-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.cpill{display:inline-flex;align-items:center;gap:8px;background:var(--sand);border:1px solid rgba(61,90,153,.1);padding:11px 20px;border-radius:12px;font-size:14px;font-weight:500;color:var(--ink);transition:all .25s var(--spring);text-decoration:none}
+.cpill:hover{background:#fff;border-color:var(--sky);box-shadow:0 4px 16px rgba(41,171,226,.15);transform:translateY(-2px)}
+.cpill.sky{color:var(--sky)}
+
+/* ═══ TOURISM ═══════════════════════════════════════ */
+.tour-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;margin-top:52px}
+.tour-card{border-radius:18px;overflow:hidden;border:1px solid rgba(61,90,153,.08);background:#fff;transition:transform .4s var(--spring),box-shadow .4s var(--out)}
+.tour-card:hover{transform:translateY(-7px);box-shadow:0 20px 56px rgba(61,90,153,.15)}
+/* ★ FIXED: fixed height wrapper, cover fill, no aspect-ratio warping */
+.tour-img{height:210px;overflow:hidden;background:linear-gradient(135deg,#c8dce8,#a8c4d4)}
+.tour-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 6s ease}
+.tour-card:hover .tour-img img{transform:scale(1.06)}
+.tour-body{padding:20px 22px 24px}
+.tour-cat{font-size:10px;font-weight:700;color:var(--sky);text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px}
+
+/* ═══ FORMS ════════════════════════════════════════ */
+.forms-list{display:flex;flex-direction:column;gap:12px;margin-top:48px}
+.form-row{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-radius:16px;background:#fff;border:1px solid rgba(61,90,153,.08);transition:all .3s var(--spring);text-decoration:none;gap:16px}
+.form-row:hover{border-color:var(--sky);transform:translateX(4px);box-shadow:0 8px 32px rgba(41,171,226,.12)}
+.form-badge{width:48px;height:48px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;letter-spacing:.04em}
+.b-pdf{background:rgba(214,75,56,.1);color:var(--red)}
+.b-xlsx{background:rgba(41,171,226,.1);color:var(--sky)}
+.form-name{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.form-sub{font-size:12px;color:var(--muted)}
+.dl-arrow{color:var(--sky);flex-shrink:0;transition:transform .3s var(--spring)}
+.form-row:hover .dl-arrow{transform:translateY(3px)}
+
+/* ═══ CONTACT ══════════════════════════════════════ */
+.offices{display:flex;flex-direction:column;gap:14px;margin-top:48px}
+.office{padding:28px 32px;border-radius:18px;background:#fff;border:1px solid rgba(61,90,153,.08);transition:all .3s var(--out)}
+.office:hover{border-color:rgba(41,171,226,.25);box-shadow:0 8px 32px rgba(61,90,153,.1)}
+.office.urg{border-color:rgba(214,75,56,.2)}
+.office.urg:hover{border-color:rgba(214,75,56,.4)}
+.o-bar{width:28px;height:3px;border-radius:2px;margin-bottom:16px}
+.o-sky{background:linear-gradient(90deg,var(--sky),#1E8FC5)}
+.o-navy{background:linear-gradient(90deg,var(--navy),#2A4080)}
+.o-red{background:linear-gradient(90deg,var(--red),#B83A2A)}
+.o-name{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.o-phone{font-size:15px;color:var(--ink2);margin-bottom:4px}
+.o-email{font-size:14px;color:var(--sky)}
+
+/* ═══ MISC CONTENT ══════════════════════════════════ */
+.ccard{padding:36px 40px}
+.abar{width:32px;height:3px;border-radius:2px;margin-bottom:20px;transition:width .4s var(--spring)}
+.ccard:hover .abar{width:52px}
+.mv-grid{display:flex;flex-direction:column;gap:18px;margin-top:48px}
+
+/* ═══ FOOTER ═══════════════════════════════════════ */
+footer{background:linear-gradient(180deg,var(--ink),#0D1525);padding:64px 0 28px;color:rgba(255,255,255,.45)}
+.ft-seals{display:flex;align-items:center;gap:24px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:40px;flex-wrap:wrap}
+.ft-seals img{height:42px;opacity:.72;transition:opacity .2s,transform .3s var(--spring)}
+.ft-seals img:hover{opacity:1;transform:scale(1.08)}
+.ft-grid{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:40px;margin-bottom:48px}
+.ft-brand{font-size:14px;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.05em;margin-bottom:10px;font-family:var(--sans)}
+.ft-desc{font-size:13px;line-height:1.7;max-width:210px;margin-bottom:12px}
+.ft-email{font-size:12px;color:rgba(255,255,255,.3)}
+.ft-col-t{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:16px}
+.ft-links{display:flex;flex-direction:column;gap:10px}
+.ft-link{font-size:13px;color:rgba(255,255,255,.42);text-align:left;transition:color .2s;font-family:var(--sans)}
+.ft-link:hover{color:rgba(255,255,255,.9)}
+.ft-govrow{border-top:1px solid rgba(255,255,255,.07);padding-top:20px;display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:20px}
+.ft-govlnk{font-size:12px;color:rgba(255,255,255,.28);transition:color .2s}
+.ft-govlnk:hover{color:rgba(255,255,255,.7)}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px}
+
+/* ═══ RESPONSIVE ═══════════════════════════════════ */
+@media(max-width:860px){
+  .hero-inner{grid-template-columns:1fr}.hero-right{display:none}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}.stat-cell:nth-child(2){border-right:none}
+  .gal-grid{grid-template-columns:repeat(2,1fr)}
+  .gal-item.tall{grid-row:span 1}.gal-item.tall .gal-img-wrap{min-height:unset}
+  .steps-grid{grid-template-columns:repeat(2,1fr)}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+}
+@media(max-width:540px){
+  .gal-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ LIVE NEWS TICKER ═══════════════════════════════ -->
+<div id="ticker">
+  <div class="tk-live"><div class="tk-dot"></div><span class="tk-label">LIVE</span></div>
+  <div class="tk-divider"></div>
+  <div class="tk-scroll">
+    <div class="tk-track" id="tkTrack">
+      <!-- Items duplicated for seamless loop -->
+      <span class="tk-item"><span class="tk-tag">BUSINESS</span>Premium Care Solutions PH opens new BPO Company in Roxas City</span>
+      <span class="tk-sep">◆</span>
+      <span class="tk-item"><span class="tk-tag">GOVERNANCE</span>1st Good Governance Summit — Capiz Next Generation Leaders 2026</span>
+      <span class="tk-sep">◆</span>
+      <span class="tk-item"><span class="tk-tag">CITY WORKS</span>Road clearing and grading at Congressman Ramon A. Arnaldo High School</span>
+      <span class="tk-sep">◆</span>
+      <span class="tk-item"><span class="tk-tag">COMMUNITY</span>International Women's Day 2026 celebrated across Roxas City barangays</span>
+      <span class="tk-sep">◆</span>
+      <span class="tk-item"><span class="tk-tag">ALERT</span>Emergency hotline active 24/7 — Roxas City CERT: (036) 522-7878</span>
+      <span class="tk-sep">◆</span>
+      <span class="tk-item"><span class="tk-tag">PERMITS</span>2026 Business Permit renewal now open — BOSS window at City Hall, 8AM–5PM</span>
+      <span class="tk-sep">◆</span>
+      <span class="tk-item"><span class="tk-tag">TOURISM</span>Visit Baybay Beach this summer — Roxas City's crown jewel on the Sibuyan Sea</span>
+      <span class="tk-sep">◆</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="tk-item"><span class="tk-tag">BUSINESS</span>Premium Care Solutions PH opens new BPO Company in Roxas City</span>
+      <span class="tk-sep">◆</span>
+      <span class="tk-item"><span class="tk-tag">GOVERNANCE</span>1st Good Governance Summit — Capiz Next Generation Leaders 2026</span>
+      <span class="tk-sep">◆</span>
+      <span class="tk-item"><span class="tk-tag">CITY WORKS</span>Road clearing and grading at Congressman Ramon A. Arnaldo High School</span>
+      <span class="tk-sep">◆</span>
+      <span class="tk-item"><span class="tk-tag">COMMUNITY</span>International Women's Day 2026 celebrated across Roxas City barangays</span>
+      <span class="tk-sep">◆</span>
+      <span class="tk-item"><span class="tk-tag">ALERT</span>Emergency hotline active 24/7 — Roxas City CERT: (036) 522-7878</span>
+      <span class="tk-sep">◆</span>
+      <span class="tk-item"><span class="tk-tag">PERMITS</span>2026 Business Permit renewal now open — BOSS window at City Hall, 8AM–5PM</span>
+      <span class="tk-sep">◆</span>
+      <span class="tk-item"><span class="tk-tag">TOURISM</span>Visit Baybay Beach this summer — Roxas City's crown jewel on the Sibuyan Sea</span>
+      <span class="tk-sep">◆</span>
+    </div>
+  </div>
+  <div class="tk-date" id="tkDate"></div>
+</div>
+
+<!-- ═══ NAVBAR ═══════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <button class="nav-logo" onclick="go('home')">
+      <img src="https://roxascity.gov.ph/wp-content/uploads/2023/01/cropped-Roxas-City-Logo-2023.png"
+           alt="Roxas City" onerror="this.style.display='none'"/>
+      <div><div class="nav-logo-title">ROXAS CITY</div><div class="nav-logo-sub">Official Government</div></div>
+    </button>
+    <div class="nav-links">
+      <div class="nav-item"><button class="nav-btn" onclick="go('home')">Home</button></div>
+      <div class="nav-item">
+        <button class="nav-btn">The City <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="nav-dd">
+          <button class="dd-btn" onclick="go('about')">About Roxas City</button>
+          <button class="dd-btn" onclick="go('mission')">Mission &amp; Vision</button>
+          <button class="dd-btn" onclick="go('officials')">City Officials</button>
+          <button class="dd-btn" onclick="go('tourism')">Tourism</button>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-btn">Government <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="nav-dd">
+          <button class="dd-btn" onclick="go('mayor')">Mayor's Office</button>
+          <button class="dd-btn" onclick="go('transparency')">Transparency</button>
+          <button class="dd-btn" onclick="go('forms')">Downloadable Forms</button>
+        </div>
+      </div>
+      <div class="nav-item"><button class="nav-btn" onclick="go('services')">Services</button></div>
+      <div class="nav-item"><button class="nav-btn" onclick="go('procurement')">Procurement</button></div>
+      <div class="nav-item"><button class="nav-btn" onclick="go('contact')">Contact Us</button></div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════
+  PAGE: HOME
+═══════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <canvas id="heroCanvas"></canvas>
+    <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          <span class="hero-badge-text">Seafood Capital of the Philippines</span>
+        </div>
+        <h1 class="display hero-title">Bigger.<br/>Brighter.<br/><span class="grad-text">Better.</span></h1>
+        <p class="hero-sub">The official website of the City Government of Roxas, Capiz — your gateway to transparent, efficient, and people-centered public service.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-sky" onclick="go('services')">Explore Services <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M6.5 2l4.5 4.5-4.5 4.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="btn btn-ghost" onclick="go('business')">Business Permits</button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-visual">
+          <div class="chip chip1"><div class="chip-num">#1</div><div class="chip-lbl">Seafood Capital, PH</div></div>
+          <div class="chip chip2"><div class="chip-num">185K+</div><div class="chip-lbl">Residents</div></div>
+          <div class="chip chip3"><div class="chip-num">100+</div><div class="chip-lbl">City services</div></div>
+          <div class="hero-card">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=85&auto=format&fit=crop"
+                 alt="Roxas City Beach"
+                 onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#1a6fa8 0%,#29ABE2 40%,#0d4f7a 100%)'"/>
+            <div class="hero-card-overlay"></div>
+            <div class="hero-card-cap">
+              <div class="eyebrow">Roxas City, Capiz</div>
+              <h3>Mantalinga Island</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVES — JS canvas ocean waves -->
+  <div class="wave-wrap">
+    <canvas id="waveCanvas"></canvas>
+  </div>
+
+  <!-- Stats -->
+  <section id="stats">
+    <div class="stats-grid">
+      <div class="stat-cell sr"><div class="stat-num">185K+</div><div class="stat-lbl">City population</div></div>
+      <div class="stat-cell sr d1"><div class="stat-num">80km</div><div class="stat-lbl">Of coastline</div></div>
+      <div class="stat-cell sr d2"><div class="stat-num">#1</div><div class="stat-lbl">Seafood Capital, Philippines</div></div>
+      <div class="stat-cell sr d3"><div class="stat-num">4th</div><div class="stat-lbl">Citizen's Charter Edition</div></div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" style="background:linear-gradient(180deg,var(--sand),var(--cream))">
+    <div class="wrap">
+      <div class="sec-hdr sr">
+        <div class="eyebrow">Frontline Services</div>
+        <h2 class="heading" style="margin-top:8px">How can we help<br/>you today?</h2>
+        <p style="font-size:17px;color:var(--ink2);line-height:1.7;margin-top:14px">All services governed by the Roxas City Citizen's Charter — 4th Edition.</p>
+      </div>
+      <div class="srv-grid">
+        <div class="glass srv-card c-sky sr d1" onclick="go('business')" style="cursor:pointer">
+          <div class="srv-icon si-sky"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="14" rx="2" stroke="#29ABE2" stroke-width="1.8"/><path d="M8 7V5a4 4 0 018 0v2" stroke="#29ABE2" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div class="srv-title">Business Permits</div>
+          <p class="srv-desc">New applications and renewals — complete in four steps at our Business One-Stop Shop.</p>
+          <div class="srv-link" style="color:var(--sky)">Learn more <span>→</span></div>
+        </div>
+        <div class="glass srv-card c-navy sr d2">
+          <div class="srv-icon si-navy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="#3D5A99" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="srv-title">City Health Office</div>
+          <p class="srv-desc">Health services, sanitary permits, medical assistance, and wellness programs.</p>
+          <div class="srv-link" style="color:var(--navy)">Learn more <span>→</span></div>
+        </div>
+        <div class="glass srv-card c-red sr d3">
+          <div class="srv-icon si-red"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#D64B38" stroke-width="1.8"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="#D64B38" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div class="srv-title">Senior Citizens</div>
+          <p class="srv-desc">Benefits, IDs, food packs, and community assistance programs for our seniors.</p>
+          <div class="srv-link" style="color:var(--red)">Learn more <span>→</span></div>
+        </div>
+        <div class="glass srv-card c-gold sr d4">
+          <div class="srv-icon si-gold"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM14 2v6h6" stroke="#C9913A" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div class="srv-title">Civil Registry</div>
+          <p class="srv-desc">Birth, marriage, and death certificates — PSA-authenticated and officially issued.</p>
+          <div class="srv-link" style="color:var(--gold)">Learn more <span>→</span></div>
+        </div>
+        <div class="glass srv-card c-navy sr d5">
+          <div class="srv-icon si-navy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#3D5A99" stroke-width="1.8"/><path d="M9 22V12h6v10" stroke="#3D5A99" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div class="srv-title">Building Permits</div>
+          <p class="srv-desc">Construction permits, zoning clearances, and annual engineering inspections.</p>
+          <div class="srv-link" style="color:var(--navy)">Learn more <span>→</span></div>
+        </div>
+        <div class="glass srv-card c-sky sr d6">
+          <div class="srv-icon si-sky"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#29ABE2" stroke-width="1.8"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" stroke="#29ABE2" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div class="srv-title">City Treasurer</div>
+          <p class="srv-desc">Real property tax payments, assessments, and official tax clearance certificates.</p>
+          <div class="srv-link" style="color:var(--sky)">Learn more <span>→</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery — actual Roxas City images -->
+  <section class="section" style="background:var(--cream);padding-top:0">
+    <div class="wrap">
+      <div class="sec-hdr sr">
+        <div class="eyebrow">Discover Roxas City</div>
+        <h2 class="heading" style="margin-top:8px">Where sea meets<br/>heritage &amp; progress.</h2>
+      </div>
+      <div class="gal-grid">
+        <div class="gal-item tall sr d1" onclick="go('tourism')">
+          <div class="gal-img-wrap">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=85&auto=format&fit=crop"
+                 alt="Baybay Beach"
+                 onerror="this.parentElement.style.background='linear-gradient(135deg,#c8dce8,#a8c4d4)'"/>
+          </div>
+          <div class="gal-overlay"></div>
+          <div class="gal-cap"><div class="eyebrow">Beach</div><h3>Baybay Beach Boulevard</h3></div>
+        </div>
+        <div class="gal-item sr d2" onclick="go('tourism')">
+          <div class="gal-img-wrap">
+            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&q=85&auto=format&fit=crop"
+                 alt="Cathedral"
+                 onerror="this.parentElement.style.background='linear-gradient(135deg,#f0e8d0,#d8c8a8)'"/>
+          </div>
+          <div class="gal-overlay"></div>
+          <div class="gal-cap"><div class="eyebrow">Heritage</div><h3>Immaculate Conception Cathedral</h3></div>
+        </div>
+        <div class="gal-item sr d3" onclick="go('about')">
+          <div class="gal-img-wrap">
+            <img src="https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?w=800&q=85&auto=format&fit=crop"
+                 alt="Roxas City Hall"
+                 onerror="this.parentElement.style.background='linear-gradient(135deg,#eef3ff,#dce8f8)'"/>
+          </div>
+          <div class="gal-overlay"></div>
+          <div class="gal-cap"><div class="eyebrow">Governance</div><h3>Roxas City Hall</h3></div>
+        </div>
+        <div class="gal-item sr d4" onclick="go('tourism')">
+          <div class="gal-img-wrap">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=85&auto=format&fit=crop"
+                 alt="Mantalinga Island"
+                 onerror="this.parentElement.style.background='linear-gradient(135deg,#b8d8f0,#90c0e4)'"/>
+          </div>
+          <div class="gal-overlay"></div>
+          <div class="gal-cap"><div class="eyebrow">Island</div><h3>Mantalinga Island</h3></div>
+        </div>
+        <div class="gal-item sr d5" onclick="go('officials')">
+          <div class="gal-img-wrap">
+            <img src="https://roxascity.gov.ph/wp-content/uploads/2025/07/Roxas-City-Elected-Offcials-2025-2028-2048x1152.jpg"
+                 alt="City Officials"
+                 style="object-position:center top"
+                 onerror="this.parentElement.style.background='linear-gradient(135deg,#eeeeff,#d8daf8)'"/>
+          </div>
+          <div class="gal-overlay"></div>
+          <div class="gal-cap"><div class="eyebrow">Leadership</div><h3>City Officials 2025–2028</h3></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest News -->
+  <section class="section" style="background:white">
+    <div class="wrap">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px">
+        <div class="sr"><div class="eyebrow">Latest News</div><h2 class="heading" style="margin-top:8px">What's new<br/>in Roxas</h2></div>
+        <button class="btn btn-ghost sr" style="font-size:13px;padding:10px 20px">View all news</button>
+      </div>
+      <div class="news-grid">
+        <div class="news-card sr d1">
+          <div class="news-img"><img src="https://roxascity.gov.ph/wp-content/uploads/2026/03/Premium-Care-Solutions-Philippines-officially-opens-new-BPO-Company-3-edited.jpg" alt="BPO" onerror="this.style.display='none'"/></div>
+          <div class="news-body"><div class="news-tag">Business</div><div class="news-title">Premium Care Solutions PH officially opens new BPO Company in Roxas City</div><div class="news-date">March 2026</div></div>
+        </div>
+        <div class="news-card sr d2">
+          <div class="news-img"><img src="https://roxascity.gov.ph/wp-content/uploads/2026/03/International-Womens-Day-2026.jpg" alt="Women's Day" onerror="this.style.display='none'"/></div>
+          <div class="news-body"><div class="news-tag">Community</div><div class="news-title">International Women's Day 2026 Celebration in Roxas City</div><div class="news-date">March 2026</div></div>
+        </div>
+        <div class="news-card sr d3">
+          <div class="news-img"><img src="https://roxascity.gov.ph/wp-content/uploads/2026/03/Borres-Youth-Leadership-Institute-Inc-Capiz-Next-Generation-Leaders-Summit-1st-Good-Governance-Summit-edited.jpg" alt="Summit" onerror="this.style.display='none'"/></div>
+          <div class="news-body"><div class="news-tag">Governance</div><div class="news-title">1st Good Governance Summit — Capiz Next Generation Leaders</div><div class="news-date">March 2026</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote strip -->
+  <section id="quote">
+    <div class="q-orb1"></div><div class="q-orb2"></div>
+    <div class="wrap-sm" style="position:relative;z-index:2">
+      <div class="q-seals sr">
+        <img src="https://roxascity.gov.ph/wp-content/uploads/2023/01/cropped-Roxas-City-Logo-2023.png" alt="Roxas City" onerror="this.style.display='none'"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Coat_of_arms_of_the_Philippines.svg/240px-Coat_of_arms_of_the_Philippines.svg.png" alt="PH Seal" onerror="this.style.display='none'"/>
+      </div>
+      <div class="q-line sr" id="qLine"></div>
+      <blockquote class="q-text sr">"Upod kita para sa kaayuhan sang tanan naton nga pumuluyo."</blockquote>
+      <p class="q-attr sr">— Mayor Ronnie T. Dadivas, City Government of Roxas</p>
+      <div class="sr"><button class="btn btn-wh" onclick="go('contact')">Contact City Hall</button></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+  PAGE: BUSINESS PERMIT
+═══════════════════════════════════════════════════ -->
+<div id="page-business" class="page">
+  <div class="ph">
+    <div class="ph-bg"></div><div class="ph-orb"></div>
+    <div class="ph-content">
+      <div class="eyebrow">Business Permits &amp; Licensing Office</div>
+      <h1 class="display" style="font-size:clamp(44px,7vw,80px);margin-top:10px">Start your business<br/>in Roxas City.</h1>
+      <p style="font-size:18px;color:var(--ink2);line-height:1.7;max-width:520px;margin:20px auto 36px">New application or renewal — complete your permit in four steps at our Business One-Stop Shop (BOSS).</p>
+      <a href="https://roxascity.gov.ph/wp-content/uploads/2026/01/APPLICATION-FORM-FOR-BUSINESS-2026-updated-ARTA.xlsx" class="btn btn-sky" style="font-size:15px;display:inline-flex">
+        Download 2026 Application Form
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M3 7l4 4 4-4M1 13h12" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+  <section class="section" style="background:white">
+    <div class="wrap">
+      <h2 class="heading sr" style="text-align:center;margin-bottom:0">How it works</h2>
+      <div class="steps-grid">
+        <div class="step sr d1"><div class="step-n">STEP 01</div><div class="step-t">File</div><p class="step-d">Submit your Unified Application Form and all required documents at the BOSS window.</p></div>
+        <div class="step sr d2"><div class="step-n">STEP 02</div><div class="step-t">Assess</div><p class="step-d">Receive a one-time assessment covering all regulatory fees and applicable business tax.</p></div>
+        <div class="step sr d3"><div class="step-n">STEP 03</div><div class="step-t">Pay</div><p class="step-d">Settle regulatory fees, business tax, and all other applicable charges at the cashier.</p></div>
+        <div class="step sr d4"><div class="step-n">STEP 04</div><div class="step-t">Claim</div><p class="step-d">Pick up your business permit and all released documents at the release window.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:linear-gradient(180deg,var(--sand),var(--cream))">
+    <div class="wrap-sm">
+      <div class="sr" style="margin-bottom:32px"><h2 class="heading" style="margin-bottom:8px">Requirements</h2><p style="font-size:14px;color:var(--ink3)">Tap each item to mark it as collected.</p></div>
+      <div class="tab-row">
+        <button class="tab-btn on" id="tabNew" onclick="switchTab('new')">New Business</button>
+        <button class="tab-btn" id="tabRen" onclick="switchTab('renewal')">Renewal</button>
+      </div>
+      <div class="req-list sr" id="reqNew">
+        <div class="req-row" onclick="toggleReq(this)"><div class="req-circle"></div><div><div class="req-title">Barangay Clearance</div><div class="req-note">For business purposes</div></div></div>
+        <div class="req-row" onclick="toggleReq(this)"><div class="req-circle"></div><div><div class="req-title">Business Name Registration</div><div class="req-note">DTI (Sole Proprietor) · SEC (Partnership/Corp) · CDA (Cooperative) · Certificate of Tax Exemption (Non-Profit)</div></div></div>
+        <div class="req-row" onclick="toggleReq(this)"><div class="req-circle"></div><div><div class="req-title">BIR Certificate of Registration</div></div></div>
+        <div class="req-row" onclick="toggleReq(this)"><div class="req-circle"></div><div><div class="req-title">Regulatory Clearances</div><div class="req-note">Zoning Clearance (CMO) · Certificate of Annual Inspection (CEO) · Sanitary Permit (CHO) · Fire Safety Inspection Certificate (BFP)</div></div></div>
+        <div class="req-row" onclick="toggleReq(this)"><div class="req-circle"></div><div><div class="req-title">Contract of Lease</div><div class="req-note">Required if renting your business premises</div></div></div>
+        <div class="req-row" onclick="toggleReq(this)"><div class="req-circle"></div><div><div class="req-title">Community Tax Certificate (Cedula)</div></div></div>
+        <div class="req-row" onclick="toggleReq(this)"><div class="req-circle"></div><div><div class="req-title">Photo of Establishment</div><div class="req-note">Front view</div></div></div>
+        <div class="req-row" onclick="toggleReq(this)"><div class="req-circle"></div><div><div class="req-title">Other Supporting Documents</div><div class="req-note">As applicable to your specific business type</div></div></div>
+      </div>
+      <div class="req-list sr" id="reqRen" style="display:none">
+        <div class="req-row" onclick="toggleReq(this)"><div class="req-circle"></div><div><div class="req-title">Barangay Clearance</div><div class="req-note">For business purposes</div></div></div>
+        <div class="req-row" onclick="toggleReq(this)"><div class="req-circle"></div><div><div class="req-title">Regulatory Clearances</div><div class="req-note">Zoning (CMO) · Annual Inspection (CEO) · Sanitary Permit (CHO) · Fire Safety (BFP)</div></div></div>
+        <div class="req-row" onclick="toggleReq(this)"><div class="req-circle"></div><div><div class="req-title">Sworn Declaration of Gross Receipts</div><div class="req-note">For the preceding year, with BIR quarterly tax payment copies</div></div></div>
+        <div class="req-row" onclick="toggleReq(this)"><div class="req-circle"></div><div><div class="req-title">Previous Mayor's Permit</div><div class="req-note">With Official Receipt of business tax paid</div></div></div>
+        <div class="req-row" onclick="toggleReq(this)"><div class="req-circle"></div><div><div class="req-title">Community Tax Certificate (Cedula)</div></div></div>
+      </div>
+      <div class="tips-box sr" style="margin-top:32px">
+        <div style="font-size:13px;font-weight:700;color:var(--sky);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">Speed up your assessment</div>
+        <p style="font-size:14px;color:var(--ink3);margin-bottom:18px">Have these ready to avoid delays in your business tax assessment.</p>
+        <div class="tip-row"><span class="tip-dash">—</span><span class="tip-text">Photocopy of your 2025 Business Permit</span></div>
+        <div class="tip-row"><span class="tip-dash">—</span><span class="tip-text">Original receipts of business tax paid (annual, semi-annual, or quarterly)</span></div>
+        <div class="tip-row"><span class="tip-dash">—</span><span class="tip-text">Certificate of Exemption — for non-stock, non-profit businesses</span></div>
+        <div class="tip-row"><span class="tip-dash">—</span><span class="tip-text">Sworn statement of previous years' gross receipts</span></div>
+        <div class="tip-row"><span class="tip-dash">—</span><span class="tip-text">Copies of annual or quarterly BIR tax payments</span></div>
+        <div class="tip-row"><span class="tip-dash">—</span><span class="tip-text">Certificate of Authority — for lending investors</span></div>
+        <div class="tip-row"><span class="tip-dash">—</span><span class="tip-text">Total sales specifying Roxas City — for businesses with principal office outside the city</span></div>
+      </div>
+      <div class="glass ccard sr" style="margin-top:32px">
+        <div class="abar" style="background:linear-gradient(90deg,var(--sky),var(--navy))"></div>
+        <h3 class="subhead" style="font-size:22px;margin-bottom:6px">Questions? We're here.</h3>
+        <p style="font-size:14px;color:var(--ink3);margin-bottom:24px">Contact the Business Permits and Licensing Office directly.</p>
+        <p style="font-weight:700;color:var(--ink);font-size:16px;margin-bottom:2px">Ms. Roselyn L. Estrebilla</p>
+        <p style="font-size:14px;color:var(--ink3);margin-bottom:20px">Business Permits and Licensing Officer</p>
+        <div class="cpill-row">
+          <a href="tel:036-520-3733" class="cpill">(036) 520-3733</a>
+          <a href="mailto:bpldroxascity@gmail.com" class="cpill sky">bpldroxascity@gmail.com</a>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:16px">Monday – Friday · 8:00 AM – 5:00 PM</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+  PAGE: ABOUT
+═══════════════════════════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="ph">
+    <div class="ph-bg"></div><div class="ph-orb"></div>
+    <div class="ph-content">
+      <div class="eyebrow">The City</div>
+      <h1 class="display" style="font-size:clamp(44px,7vw,80px);margin-top:10px">About Roxas City</h1>
+      <p style="font-size:18px;color:var(--ink2);line-height:1.7;max-width:520px;margin:20px auto 0">The Seafood Capital of the Philippines, in the heart of Capiz.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="wrap-sm">
+      <div class="glass ccard sr" style="margin-bottom:18px"><div class="abar" style="background:linear-gradient(90deg,var(--sky),#1E8FC5)"></div><h2 class="subhead" style="margin-bottom:14px">The Seafood Capital</h2><p style="font-size:15.5px;color:var(--ink2);line-height:1.7">Roxas City is the capital of Capiz province in Region VI (Western Visayas). With a population of over 185,000, it is the most populous city in Capiz. Known as the Seafood Capital of the Philippines, the city is celebrated for its rich marine resources — crabs, lobsters, mussels, oysters, and the prized <em>diwal</em> (angel wings clam).</p></div>
+      <div class="glass ccard sr d1" style="margin-bottom:18px"><div class="abar" style="background:linear-gradient(90deg,var(--navy),#2A4080)"></div><h2 class="subhead" style="margin-bottom:14px">History &amp; Heritage</h2><p style="font-size:15.5px;color:var(--ink2);line-height:1.7">Originally named the Municipality of Capiz, the city was chartered on May 12, 1951, and renamed in honor of Manuel Acuña Roxas — the first president of the independent Third Philippine Republic and a native son of the city. Heritage structures including the Immaculate Conception Metropolitan Cathedral (c. 1870s) still stand in active use today.</p></div>
+      <div class="glass ccard sr d2"><div class="abar" style="background:linear-gradient(90deg,var(--gold),#E8A83C)"></div><h2 class="subhead" style="margin-bottom:14px">Economy &amp; Progress</h2><p style="font-size:15.5px;color:var(--ink2);line-height:1.7">Roxas City is the center of trade, commerce, and logistics in Northern Panay. The city's economy is anchored in aquaculture — particularly oyster and milkfish farming — alongside a growing commercial sector. Daily flights connect to Manila via Philippine Airlines, Cebu Pacific, and AirAsia.</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ MISSION ═══════════════════════════════════════ -->
+<div id="page-mission" class="page">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-orb"></div>
+    <div class="ph-content"><div class="eyebrow">Purpose &amp; Direction</div><h1 class="display" style="font-size:clamp(44px,7vw,80px);margin-top:10px">Mission &amp; Vision</h1></div>
+  </div>
+  <section class="section"><div class="wrap-sm"><div class="mv-grid">
+    <div class="glass ccard sr"><div class="abar" style="background:linear-gradient(90deg,var(--sky),#1E8FC5)"></div><div style="font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sky);margin-bottom:8px">Mission</div><div class="subhead" style="margin-bottom:14px">To Serve with Excellence</div><p style="font-size:16px;color:var(--ink2);line-height:1.75">We are committed to delivering efficient, transparent, and responsive government services that uphold the rights and improve the quality of life of every resident of Roxas City.</p></div>
+    <div class="glass ccard sr d1"><div class="abar" style="background:linear-gradient(90deg,var(--gold),#E8A83C)"></div><div style="font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Vision</div><div class="subhead" style="margin-bottom:14px">A Bigger, Brighter, Better Roxas City</div><p style="font-size:16px;color:var(--ink2);line-height:1.75">We envision Roxas City as a premier city in the Philippines — economically vibrant, environmentally sustainable, socially equitable, and governed by principled and capable leaders dedicated to the common good.</p></div>
+  </div></div></section>
+</div>
+
+<!-- ═══ OFFICIALS ═════════════════════════════════════ -->
+<div id="page-officials" class="page">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-orb"></div>
+    <div class="ph-content"><div class="eyebrow">Your Government</div><h1 class="display" style="font-size:clamp(44px,7vw,80px);margin-top:10px">City Officials</h1><p style="font-size:18px;color:var(--ink2);max-width:500px;margin:18px auto 0">Meet the people mandated to lead and serve Roxas City — Term 2025–2028.</p></div>
+  </div>
+  <section class="section"><div class="wrap">
+    <div class="sr" style="border-radius:20px;overflow:hidden;border:1px solid rgba(61,90,153,.1);box-shadow:0 8px 40px rgba(61,90,153,.12)">
+      <img src="https://roxascity.gov.ph/wp-content/uploads/2025/07/Roxas-City-Elected-Offcials-2025-2028-2048x1152.jpg" alt="City Officials 2025–2028" style="width:100%;height:auto;display:block" onerror="this.parentElement.style.minHeight='200px'"/>
+    </div>
+    <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:14px">City Government of Roxas — Elected Officials, 2025–2028</p>
+  </div></section>
+</div>
+
+<!-- ═══ TOURISM ════════════════════════════════════════ -->
+<div id="page-tourism" class="page">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-orb"></div>
+    <div class="ph-content"><div class="eyebrow">Discover</div><h1 class="display" style="font-size:clamp(44px,7vw,80px);margin-top:10px">Visit Roxas City</h1><p style="font-size:18px;color:var(--ink2);max-width:500px;margin:18px auto 0">Pristine coastlines, heritage landmarks, world-class seafood, and a city that truly welcomes you.</p></div>
+  </div>
+  <section class="section">
+    <div class="wrap">
+      <div class="tour-grid">
+        <div class="tour-card sr d1">
+          <div class="tour-img"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=85&auto=format&fit=crop" alt="Baybay Beach" onerror="this.parentElement.style.background='linear-gradient(135deg,#c8dce8,#a8c4d4)'"/></div>
+          <div class="tour-body"><div class="tour-cat">Beach</div><div class="subhead" style="font-size:18px;margin-bottom:8px">Baybay Beach</div><p style="font-size:14px;color:var(--ink3);line-height:1.65">Gray-sand beach along the Sibuyan Sea, lined with fresh seafood restaurants and pavilions. The crown jewel of Roxas City.</p></div>
+        </div>
+        <div class="tour-card sr d2">
+          <div class="tour-img"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=85&auto=format&fit=crop" alt="Mantalinga Island" onerror="this.parentElement.style.background='linear-gradient(135deg,#b8d8f0,#90c0e4)'"/></div>
+          <div class="tour-body"><div class="tour-cat">Ecotourism</div><div class="subhead" style="font-size:18px;margin-bottom:8px">Mantalinga Island</div><p style="font-size:14px;color:var(--ink3);line-height:1.65">A pristine island off the coast of Roxas City with clear waters and white-sand shores — perfect for a day escape from the city.</p></div>
+        </div>
+        <div class="tour-card sr d3">
+          <div class="tour-img"><img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=600&q=85&auto=format&fit=crop" alt="Island Hopping" style="object-position:30% center" onerror="this.parentElement.style.background='linear-gradient(135deg,#a8d0ec,#80b8e0)'"/></div>
+          <div class="tour-body"><div class="tour-cat">Island Hopping</div><div class="subhead" style="font-size:18px;margin-bottom:8px">Olotayan Island</div><p style="font-size:14px;color:var(--ink3);line-height:1.65">A short boat ride from Baybay Beach — pristine waters, coral gardens, and white-sand shores perfect for snorkeling.</p></div>
+        </div>
+        <div class="tour-card sr d4">
+          <div class="tour-img"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=85&auto=format&fit=crop" alt="Seafood" style="object-position:center bottom" onerror="this.parentElement.style.background='linear-gradient(135deg,#f0d8b8,#e0c090)'"/></div>
+          <div class="tour-body"><div class="tour-cat">Culinary</div><div class="subhead" style="font-size:18px;margin-bottom:8px">Seafood Capital</div><p style="font-size:14px;color:var(--ink3);line-height:1.65">Fresh oysters, crabs, lobsters, and the rare <em>diwal</em> (angel wings clam) — served open-air at the city seafood court.</p></div>
+        </div>
+        <div class="tour-card sr d5">
+          <div class="tour-img"><img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&q=85&auto=format&fit=crop" alt="Cathedral" onerror="this.parentElement.style.background='linear-gradient(135deg,#f0e8d0,#d8c8a0)'"/></div>
+          <div class="tour-body"><div class="tour-cat">Heritage</div><div class="subhead" style="font-size:18px;margin-bottom:8px">Immaculate Conception Cathedral</div><p style="font-size:14px;color:var(--ink3);line-height:1.65">Built in the 1870s — one of the oldest Spanish-era churches in Panay and a landmark of Capiz heritage.</p></div>
+        </div>
+        <div class="tour-card sr d6">
+          <div class="tour-img"><img src="https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?w=800&q=85&auto=format&fit=crop" alt="Roxas City Hall" onerror="this.parentElement.style.background='linear-gradient(135deg,#d8e0f0,#c0cce0)'"/></div>
+          <div class="tour-body"><div class="tour-cat">Festival</div><div class="subhead" style="font-size:18px;margin-bottom:8px">Halaran Festival</div><p style="font-size:14px;color:var(--ink3);line-height:1.65">Celebrated every October — grandest thanksgiving festival of Capiz, with street dancing, agri-trade fairs, and cultural shows.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ SERVICES PAGE ═════════════════════════════════ -->
+<div id="page-services" class="page">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-orb"></div>
+    <div class="ph-content"><div class="eyebrow">Frontline Services</div><h1 class="display" style="font-size:clamp(44px,7vw,80px);margin-top:10px">City Services</h1><p style="font-size:18px;color:var(--ink2);max-width:500px;margin:18px auto 0">All services are governed by the Roxas City Citizen's Charter — 4th Edition (2023).</p></div>
+  </div>
+  <section class="section" style="background:linear-gradient(180deg,var(--sand),var(--cream))"><div class="wrap"><div class="srv-grid">
+    <div class="glass srv-card c-sky sr d1" onclick="go('business')" style="cursor:pointer"><div class="srv-icon si-sky"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="14" rx="2" stroke="#29ABE2" stroke-width="1.8"/><path d="M8 7V5a4 4 0 018 0v2" stroke="#29ABE2" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="srv-title">Business Permits</div><p class="srv-desc">New applications and renewals — four steps at the Business One-Stop Shop.</p><div class="srv-link" style="color:var(--sky)">Go to Business Permits →</div></div>
+    <div class="glass srv-card c-navy sr d2"><div class="srv-icon si-navy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="#3D5A99" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="srv-title">City Health Office</div><p class="srv-desc">Health services, sanitary permits, medical assistance, and wellness programs.</p><div class="srv-link" style="color:var(--navy)">Learn more →</div></div>
+    <div class="glass srv-card c-red sr d3"><div class="srv-icon si-red"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#D64B38" stroke-width="1.8"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="#D64B38" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="srv-title">Senior Citizens</div><p class="srv-desc">Benefits, IDs, food assistance, and community care programs for senior residents.</p><div class="srv-link" style="color:var(--red)">Learn more →</div></div>
+    <div class="glass srv-card c-gold sr d4"><div class="srv-icon si-gold"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM14 2v6h6" stroke="#C9913A" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="srv-title">Civil Registry</div><p class="srv-desc">Birth, marriage, and death certificates — officially issued and PSA-authenticated.</p><div class="srv-link" style="color:var(--gold)">Learn more →</div></div>
+    <div class="glass srv-card c-sky sr d5"><div class="srv-icon si-sky"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#29ABE2" stroke-width="1.8"/><path d="M9 22V12h6v10" stroke="#29ABE2" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="srv-title">Building &amp; Zoning</div><p class="srv-desc">Construction permits, zoning clearances, and annual engineering inspection certificates.</p><div class="srv-link" style="color:var(--sky)">Learn more →</div></div>
+    <div class="glass srv-card c-navy sr d6"><div class="srv-icon si-navy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#3D5A99" stroke-width="1.8"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" stroke="#3D5A99" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="srv-title">City Treasurer</div><p class="srv-desc">Real property tax payments, clearances, and official revenue assessments.</p><div class="srv-link" style="color:var(--navy)">Learn more →</div></div>
+  </div></div></section>
+</div>
+
+<!-- ═══ FORMS ══════════════════════════════════════════ -->
+<div id="page-forms" class="page">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-orb"></div>
+    <div class="ph-content"><div class="eyebrow">Official Documents</div><h1 class="display" style="font-size:clamp(44px,7vw,80px);margin-top:10px">Downloadable Forms</h1></div>
+  </div>
+  <section class="section"><div class="wrap-sm"><div class="forms-list">
+    <a href="https://roxascity.gov.ph/wp-content/uploads/2026/01/APPLICATION-FORM-FOR-BUSINESS-2026-updated-ARTA.xlsx" target="_blank" class="form-row sr"><div style="display:flex;align-items:center;gap:16px"><div class="form-badge b-xlsx">XLSX</div><div><div class="form-name">2026 Business Permit Application Form</div><div class="form-sub">Updated for ARTA compliance</div></div></div><svg class="dl-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4M3 17h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="https://roxascity.gov.ph/wp-content/uploads/2024/06/CITIZEN-CHARTER-2023-4th-edition-updated.pdf" target="_blank" class="form-row sr d1"><div style="display:flex;align-items:center;gap:16px"><div class="form-badge b-pdf">PDF</div><div><div class="form-name">Citizen's Charter 2023 — 4th Edition</div><div class="form-sub">Comprehensive services guide</div></div></div><svg class="dl-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4M3 17h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="https://roxascity.gov.ph/wp-content/uploads/2023/10/Roxas-City-Citizen-Charter-2022.pdf" target="_blank" class="form-row sr d2"><div style="display:flex;align-items:center;gap:16px"><div class="form-badge b-pdf">PDF</div><div><div class="form-name">Citizen's Charter 2022</div><div class="form-sub">Previous edition for reference</div></div></div><svg class="dl-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4M3 17h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div></div></section>
+</div>
+
+<!-- ═══ CONTACT ════════════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-orb"></div>
+    <div class="ph-content"><div class="eyebrow">Get in Touch</div><h1 class="display" style="font-size:clamp(44px,7vw,80px);margin-top:10px">Contact Us</h1></div>
+  </div>
+  <section class="section"><div class="wrap-sm"><div class="offices">
+    <div class="office sr"><div class="o-bar o-sky"></div><div class="o-name">City Hall — Main Office</div><div class="o-phone">(036) 621-0391</div><div class="o-email">roxascitygovph@gmail.com</div></div>
+    <div class="office sr d1"><div class="o-bar o-navy"></div><div class="o-name">Business Permits &amp; Licensing Office</div><div class="o-phone">(036) 520-3733</div><div class="o-email">bpldroxascity@gmail.com</div></div>
+    <div class="office urg sr d2"><div class="o-bar o-red"></div><div class="o-name">Emergency — Roxas City CERT</div><div class="o-phone">(036) 522-7878</div><div class="o-phone">0917-306-6741 &nbsp;·&nbsp; 0912-472-2669</div></div>
+    <div class="office sr d3" style="background:var(--sand)"><p style="font-size:14.5px;color:var(--ink2);line-height:1.8"><strong style="color:var(--ink)">Office Hours:</strong> Monday to Friday, 8:00 AM – 5:00 PM<br/><strong style="color:var(--ink)">Address:</strong> Roxas City Hall, Arnaldo Boulevard, Roxas City, Capiz 5800, Philippines</p></div>
+  </div></div></section>
+</div>
+
+<!-- ═══ GENERIC PAGES ══════════════════════════════════ -->
+<div id="page-mayor" class="page">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-orb"></div><div class="ph-content"><div class="eyebrow">City Mayor</div><h1 class="display" style="font-size:clamp(44px,7vw,80px);margin-top:10px">Mayor's Office</h1></div></div>
+  <section class="section"><div class="wrap-sm"><div class="glass ccard sr"><div class="abar" style="background:linear-gradient(90deg,var(--sky),var(--navy))"></div><p style="font-size:16px;color:var(--ink2);line-height:1.75">Mayor Ronnie T. Dadivas leads the City Government of Roxas with a commitment to transparency, innovation, and genuine public service. Under his administration, Roxas City has earned national recognition for governance excellence, infrastructure development, and social welfare programs.</p></div></div></section>
+</div>
+<div id="page-transparency" class="page">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-orb"></div><div class="ph-content"><div class="eyebrow">Open Government</div><h1 class="display" style="font-size:clamp(44px,7vw,80px);margin-top:10px">Transparency</h1></div></div>
+  <section class="section"><div class="wrap-sm"><div class="glass ccard sr"><div class="abar" style="background:linear-gradient(90deg,var(--sky),var(--navy))"></div><p style="font-size:16px;color:var(--ink2);line-height:1.75">Access executive orders, ordinances, resolutions, and official issuances of the City Government of Roxas. In compliance with the Full Disclosure Policy of the DILG, all financial documents are made available to the public. Visit the City Hall or call (036) 621-0391 for assistance.</p></div></div></section>
+</div>
+<div id="page-procurement" class="page">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-orb"></div><div class="ph-content"><div class="eyebrow">Bids &amp; Awards Committee</div><h1 class="display" style="font-size:clamp(44px,7vw,80px);margin-top:10px">Procurement</h1></div></div>
+  <section class="section"><div class="wrap-sm"><div class="glass ccard sr"><div class="abar" style="background:linear-gradient(90deg,var(--sky),var(--navy))"></div><p style="font-size:16px;color:var(--ink2);line-height:1.75">The Roxas City BAC ensures all procurement activities comply with Republic Act 9184 (Government Procurement Reform Act). All invitations to bid, notices of award, and contracts are published in accordance with transparency requirements.</p></div></div></section>
+</div>
+
+<!-- ═══ FOOTER ═════════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="ft-seals">
+      <img src="https://roxascity.gov.ph/wp-content/uploads/2023/01/cropped-Roxas-City-Logo-2023.png" alt="Roxas City" onerror="this.style.display='none'"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Coat_of_arms_of_the_Philippines.svg/240px-Coat_of_arms_of_the_Philippines.svg.png" alt="PH Seal" onerror="this.style.display='none'"/>
+      <img src="https://roxascity.gov.ph/wp-content/uploads/elementor/thumbs/Transparency-seal-circle-pl9m0tsk3m5rl8eeigknjuipx5x07l1n1q6mv1kc4c.png" alt="Transparency Seal" onerror="this.style.display='none'"/>
+    </div>
+    <div class="ft-grid">
+      <div><div class="ft-brand">ROXAS CITY</div><p class="ft-desc">Official Website of the City Government of Roxas, Capiz, Philippines.</p><div class="ft-email">roxascitygovph@gmail.com</div></div>
+      <div><div class="ft-col-t">The City</div><div class="ft-links"><button class="ft-link" onclick="go('about')">About Roxas City</button><button class="ft-link" onclick="go('mission')">Mission &amp; Vision</button><button class="ft-link" onclick="go('officials')">City Officials</button><button class="ft-link" onclick="go('tourism')">Tourism</button></div></div>
+      <div><div class="ft-col-t">Government</div><div class="ft-links"><button class="ft-link" onclick="go('mayor')">Mayor's Office</button><button class="ft-link" onclick="go('transparency')">Transparency</button><button class="ft-link" onclick="go('forms')">Downloadable Forms</button><button class="ft-link" onclick="go('procurement')">Procurement</button></div></div>
+      <div><div class="ft-col-t">Services</div><div class="ft-links"><button class="ft-link" onclick="go('services')">All Services</button><button class="ft-link" onclick="go('business')">Business Permits</button><button class="ft-link" onclick="go('contact')">Contact Us</button></div></div>
+    </div>
+    <div class="ft-govrow">
+      <a href="http://president.gov.ph/" target="_blank" class="ft-govlnk">Office of the President</a>
+      <a href="http://ovp.gov.ph/" target="_blank" class="ft-govlnk">Office of the Vice President</a>
+      <a href="http://www.senate.gov.ph/" target="_blank" class="ft-govlnk">Senate of the Philippines</a>
+      <a href="http://www.congress.gov.ph/" target="_blank" class="ft-govlnk">House of Representatives</a>
+      <a href="https://www.dilg.gov.ph/" target="_blank" class="ft-govlnk">DILG</a>
+      <a href="https://www.pagasa.dost.gov.ph/" target="_blank" class="ft-govlnk">PAGASA</a>
+    </div>
+    <div class="ft-bottom">
+      <span>© 2025 City Government of Roxas. All content is in the public domain unless otherwise stated.</span>
+      <span>Republic of the Philippines</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Nav + page routing ────────────────────────── */
+function go(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const p = document.getElementById('page-' + id);
+  if (p) { p.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+  setTimeout(initSR, 80);
+}
+
+/* ── Navbar scroll ─────────────────────────────── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, {passive:true});
+
+/* ── Scroll Reveal ─────────────────────────────── */
+function initSR() {
+  const els = document.querySelectorAll('.page.active .sr:not(.visible)');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, {threshold:0.08, rootMargin:'0px 0px -32px 0px'});
+  els.forEach(el => obs.observe(el));
+}
+
+/* ── Quote line ────────────────────────────────── */
+function initQL() {
+  const l = document.getElementById('qLine');
+  if (!l) return;
+  new IntersectionObserver(([e]) => { if (e.isIntersecting) l.classList.add('visible'); }, {threshold:.5}).observe(l);
+}
+
+/* ── Ticker date ───────────────────────────────── */
+function setTickerDate() {
+  const d = document.getElementById('tkDate');
+  if (!d) return;
+  const now = new Date();
+  d.textContent = now.toLocaleDateString('en-PH', {weekday:'short', month:'short', day:'numeric', year:'numeric'});
+}
+
+/* ── Business permit tabs ──────────────────────── */
+function switchTab(tab) {
+  const nBtn = document.getElementById('tabNew');
+  const rBtn = document.getElementById('tabRen');
+  const nList = document.getElementById('reqNew');
+  const rList = document.getElementById('reqRen');
+  if (!nBtn) return;
+  if (tab === 'new') {
+    nBtn.classList.add('on'); rBtn.classList.remove('on');
+    nList.style.display = 'block'; rList.style.display = 'none';
+  } else {
+    rBtn.classList.add('on'); nBtn.classList.remove('on');
+    rList.style.display = 'block'; nList.style.display = 'none';
+  }
+}
+
+/* ── Checklist ─────────────────────────────────── */
+function toggleReq(el) {
+  el.classList.toggle('chk');
+  const c = el.querySelector('.req-circle');
+  c.innerHTML = el.classList.contains('chk')
+    ? `<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.8 7L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+    : '';
+}
+
+/* ── Init ──────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  initSR();
+  initQL();
+  setTickerDate();
+  initWaves();
+  initHeroOcean();
+});
+initSR();
+
+/* ── Canvas Ocean Waves ─────────────────────────── */
+function initWaves() {
+  const canvas = document.getElementById('waveCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, t = 0;
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const waves = [
+    { A:38, f:0.012, speed:0.022, y:0.52, color:'rgba(41,171,226,0.18)',  phase:0      },
+    { A:28, f:0.018, speed:0.034, y:0.60, color:'rgba(41,171,226,0.28)',  phase:1.1    },
+    { A:20, f:0.025, speed:0.046, y:0.68, color:'rgba(61,140,210,0.22)',  phase:2.3    },
+    { A:14, f:0.032, speed:0.060, y:0.76, color:'rgba(255,255,255,0.70)', phase:0.7    },
+    { A:10, f:0.040, speed:0.075, y:0.82, color:'rgba(255,255,255,0.90)', phase:3.5    },
+    { A: 7, f:0.048, speed:0.090, y:0.88, color:'rgba(255,255,255,1.00)', phase:1.8    },
+  ];
+
+  function drawWave(w, t) {
+    ctx.beginPath();
+    ctx.moveTo(0, H);
+    for (let x = 0; x <= W; x += 4) {
+      const y = w.y * H + Math.sin(x * w.f + t * w.speed + w.phase) * w.A
+                        + Math.sin(x * w.f * 1.7 + t * w.speed * 0.6 + w.phase + 1) * (w.A * 0.4);
+      ctx.lineTo(x, y);
+    }
+    ctx.lineTo(W, H);
+    ctx.closePath();
+    ctx.fillStyle = w.color;
+    ctx.fill();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    t++;
+    const grad = ctx.createLinearGradient(0, 0, 0, H);
+    grad.addColorStop(0, 'rgba(238,246,255,0)');
+    grad.addColorStop(0.4, 'rgba(200,232,250,0.15)');
+    grad.addColorStop(1, 'rgba(255,255,255,1)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+    waves.forEach(w => drawWave(w, t));
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+
+/* ── Hero Ocean Ripples ─────────────────────────── */
+function initHeroOcean() {
+  const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, t = 0;
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  const ro = new ResizeObserver(resize);
+  ro.observe(canvas.parentElement);
+  resize();
+
+  // Floating light caustic ripples — underwater light effect
+  const ripples = Array.from({length:9}, (_, i) => ({
+    x: Math.random(),
+    y: Math.random() * 0.7,
+    r: 60 + Math.random() * 120,
+    speed: 0.004 + Math.random() * 0.006,
+    phase: Math.random() * Math.PI * 2,
+    opacity: 0.04 + Math.random() * 0.08,
+  }));
+
+  // Gentle sine waves across hero
+  const hWaves = [
+    { A:22, f:0.006, speed:0.018, y:0.25, opacity:0.08, phase:0 },
+    { A:16, f:0.009, speed:0.025, y:0.45, opacity:0.06, phase:2 },
+    { A:12, f:0.013, speed:0.032, y:0.65, opacity:0.07, phase:4 },
+    { A:28, f:0.005, speed:0.014, y:0.80, opacity:0.09, phase:1 },
+  ];
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    t++;
+
+    // Draw soft wave lines
+    hWaves.forEach(w => {
+      ctx.beginPath();
+      for (let x = 0; x <= W; x += 3) {
+        const y = w.y * H + Math.sin(x * w.f + t * w.speed + w.phase) * w.A
+                          + Math.sin(x * w.f * 2.1 + t * w.speed * 0.7) * (w.A * 0.3);
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = `rgba(41,171,226,${w.opacity})`;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    });
+
+    // Draw caustic light ripples
+    ripples.forEach(r => {
+      const cx = r.x * W;
+      const cy = r.y * H + Math.sin(t * r.speed + r.phase) * 18;
+      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r.r);
+      grad.addColorStop(0, `rgba(255,255,255,${r.opacity})`);
+      grad.addColorStop(0.5, `rgba(41,171,226,${r.opacity * 0.4})`);
+      grad.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, r.r, r.r * 0.45, t * 0.003 + r.phase, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+</script>
+</body>
+</html>
